@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    app:startDestination="@id/Search"
+    android:id="@+id/nav_graph">
+
+    <fragment
+        android:id="@+id/Search"
+        android:name="com.example.project8.SearchFragment"
+        android:label="fragment_search"
+        tools:layout="@layout/fragment_search" >
+    <action
+        android:id="@+id/action_search_to_display"
+        app:destination="@id/Display" />
+
+
+    </fragment>
+
+    <fragment
+        android:id="@+id/Display"
+        android:name="com.example.project8.DisplayFragment"
+        android:label="fragment_display"
+        tools:layout="@layout/fragment_display" >
+        <action
+            android:id="@+id/action_display_to_search"
+            app:destination="@id/Search" />
+        <argument
+            android:name="Movie"
+            app:argType="OMDBMovie" />
+    </fragment>
+
+</navigation>

@@ -17,6 +17,10 @@ import retrofit2.Response
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import android.util.Log
+import androidx.lifecycle.Observer
+import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.findNavController
+import androidx.navigation.fragment.findNavController
 
 
 private const val BASE_URL = "https://www.omdbapi.com/?apikey=4d23ddf4&"
@@ -35,12 +39,14 @@ class SearchFragment: Fragment() {
     ): View? {
         _binding = FragmentSearchBinding.inflate(inflater, container, false)
         val view = binding.root
+
         val retrofit =
             Retrofit.Builder().baseUrl(BASE_URL).addConverterFactory(GsonConverterFactory.create())
                 .build()
         val OMDBService = retrofit.create(OMDBapi::class.java)
+
         binding.searchButton.setOnClickListener {
-            OMDBService.search(binding.searchParameter.text.toString()).enqueue(object :
+            OMDBService.search(binding.searchParameter.text.toString())?.enqueue(object :
                 Callback<OMDBMovie> {
                 override fun onResponse(call: Call<OMDBMovie>, response: Response<OMDBMovie>) {
                     Log.i(TAG, "onResponse $response")
@@ -49,6 +55,8 @@ class SearchFragment: Fragment() {
                         Log.w(TAG, "Did not receive valid response body from OMDB API... exiting")
                         return
                     }
+                    val action = SearchFragmentDirections.actionSearchToDisplay(body)
+                    findNavController().navigate(action)
                 }
 
                 override fun onFailure(call: Call<OMDBMovie>, t: Throwable) {
