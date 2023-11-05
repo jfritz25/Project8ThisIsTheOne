@@ -2,4 +2,11 @@
     <string name="app_name">Project8ThisIsTheOne</string>
     <string name="enter_a_movie">Enter a Movie</string>
     <string name="search">Search</string>
+    <string name="title">Title</string>
+    <string name="genre">Genre</string>
+    <string name="year">Year</string>
+    <string name="rated">Rated</string>
+    <string name="imdbrating">imdbRating</string>
+    <string name="runtime">Runtime</string>
+    <string name="link">Link</string>
 </resources>

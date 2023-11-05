@@ -10,5 +10,6 @@ data class OMDBMovie (
     @SerializedName("Title") val title: String,
     @SerializedName("Runtime") val runtime: String,
     @SerializedName("Poster") val posterString: String,
+    @SerializedName("imdbID") val imdbID: String,
 
     )

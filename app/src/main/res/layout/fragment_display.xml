@@ -19,7 +19,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
                 android:layout_margin="0dp"
-                android:text="Title"
+                android:text="@string/title"
                 android:autoSizeTextType="uniform"
                 android:textStyle="bold" />
         </LinearLayout>
@@ -37,7 +37,7 @@
             android:layout_width="205dp"
             android:layout_height="50dp"
             android:layout_marginTop="20dp"
-            android:text="Genre"
+            android:text="@string/genre"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/Poster" />
 
@@ -46,7 +46,7 @@
             android:layout_width="205dp"
             android:layout_height="50dp"
             android:layout_marginTop="20dp"
-            android:text="Year"
+            android:text="@string/year"
             app:layout_constraintEnd_toEndOf="parent"
             tools:layout_editor_absoluteY="450dp"
             app:layout_constraintTop_toBottomOf="@+id/Poster" />
@@ -57,7 +57,7 @@
             android:layout_height="50dp"
             android:layout_marginTop="24dp"
             android:layout_marginEnd="1dp"
-            android:text="Rated"
+            android:text="@string/rated"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintEnd_toStartOf="@+id/Runtime"
             app:layout_constraintHorizontal_bias="0.0"
@@ -65,12 +65,12 @@
             app:layout_constraintTop_toBottomOf="@+id/Genre" />
 
         <TextView
-            android:id="@+id/imdbRuntime"
+            android:id="@+id/imdbRating"
             android:layout_width="205dp"
             android:layout_height="50dp"
             android:layout_marginTop="28dp"
             android:layout_marginEnd="1dp"
-            android:text="imdbRuntime"
+            android:text="@string/imdbrating"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintEnd_toStartOf="@+id/Link"
             app:layout_constraintHorizontal_bias="0.00"
@@ -83,7 +83,7 @@
             android:layout_height="50dp"
             android:layout_marginStart="1dp"
             android:layout_marginTop="24dp"
-            android:text="Runtime"
+            android:text="@string/runtime"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="1.0"
             app:layout_constraintStart_toEndOf="@+id/Rated"
@@ -96,7 +96,7 @@
             android:layout_height="50dp"
             android:layout_marginStart="1dp"
             android:layout_marginTop="28dp"
-            android:text="Link"
+            android:text="@string/link"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="1.0"
             app:layout_constraintStart_toEndOf="@+id/Rated"
