@@ -8,18 +8,12 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import com.example.project8.databinding.FragmentSearchBinding
 import com.example.project8.model.OMDBMovie
-import okhttp3.HttpUrl
-import okhttp3.OkHttpClient
-import okhttp3.Request
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import android.util.Log
-import androidx.lifecycle.Observer
-import androidx.lifecycle.ViewModelProvider
-import androidx.navigation.findNavController
 import androidx.navigation.fragment.findNavController
 
 

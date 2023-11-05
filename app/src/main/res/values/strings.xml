@@ -9,4 +9,5 @@
     <string name="imdbrating">imdbRating</string>
     <string name="runtime">Runtime</string>
     <string name="link">Link</string>
+    <string name="share">Share</string>
 </resources>

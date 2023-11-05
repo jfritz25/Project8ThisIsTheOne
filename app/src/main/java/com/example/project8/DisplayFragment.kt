@@ -1,6 +1,8 @@
 package com.example.project8
 
 import android.annotation.SuppressLint
+import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -12,10 +14,11 @@ import com.bumptech.glide.load.resource.bitmap.CenterCrop
 import com.bumptech.glide.load.resource.bitmap.RoundedCorners
 import com.bumptech.glide.request.RequestOptions
 import com.example.project8.databinding.FragmentDisplayBinding
+import com.example.project8.model.OMDBMovie
 
 
 class DisplayFragment: Fragment() {
-    val movie = DisplayFragmentArgs.fromBundle(requireArguments()).Movie
+    val movie = DisplayFragmentArgs.fromBundle(requireArguments()).movie
 
     private var _binding: FragmentDisplayBinding? = null
 
@@ -27,15 +30,15 @@ class DisplayFragment: Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         val view = binding.root
-        binding.Genre.text = movie.Genre
-        binding.imdbRating.text = movie.imdbRating
-        binding.Title.text = movie.Title
-        binding.Year.text = movie.Year
-        binding.Rated.text = movie.Rated
-        binding.Runtime.text = movie.Runtime
-        binding.Link.text = "https://www.imdb.com/title/${movie.imdbID}/"
+        binding.Genre.text = movie?.genre
+        binding.imdbRating.text = movie?.imdbRating
+        binding.Title.text = movie?.title
+        binding.Year.text = movie?.year
+        binding.Rated.text = movie?.rating
+        binding.Runtime.text = movie?.runtime
+        binding.Link.text = "https://www.imdb.com/title/${movie?.imdbID}/"
 
-        Glide.with(requireContext()).load(movie.Poster)
+        Glide.with(requireContext()).load(movie?.posterString)
             .apply(
                 RequestOptions().transform(
                     CenterCrop(), RoundedCorners(20)
@@ -43,6 +46,22 @@ class DisplayFragment: Fragment() {
             )
             .into(binding.Poster)
 
+        binding.Link.setOnClickListener {
+            val url = binding.Link.text
+            val intent = Intent(Intent.ACTION_VIEW)
+            intent.data = Uri.parse(url.toString())
+            startActivity(intent)
+
+        }
+        binding.button.setOnClickListener {
+            val shareIntent = Intent().apply {
+                action = Intent.ACTION_SEND
+                putExtra(Intent.EXTRA_TEXT, "${binding.Title.text}: ${binding.Link.text}")
+                type = "text/plain"
+            }
+
+            startActivity(Intent.createChooser(shareIntent, "Share Movie"))
+        }
         return view
 
     }

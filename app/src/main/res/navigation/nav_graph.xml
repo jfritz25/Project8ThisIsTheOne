@@ -27,7 +27,9 @@
             app:destination="@id/Search" />
         <argument
             android:name="Movie"
-            app:argType="OMDBMovie" />
+            app:argType="com.example.project8.model.OMDBMovie"
+            android:defaultValue="@null"
+            app:nullable="true"/>
     </fragment>
 
 </navigation>
