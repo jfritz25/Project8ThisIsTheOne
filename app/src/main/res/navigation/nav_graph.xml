@@ -12,7 +12,14 @@
         tools:layout="@layout/fragment_search" >
     <action
         android:id="@+id/action_search_to_display"
-        app:destination="@id/Display" />
+        app:destination="@id/Display">
+        <argument
+            android:name="Movie"
+            app:argType="com.example.project8.model.OMDBMovie"
+            app:nullable="true"
+            android:defaultValue="@null" />
+    </action>
+
 
 
     </fragment>
@@ -28,8 +35,9 @@
         <argument
             android:name="Movie"
             app:argType="com.example.project8.model.OMDBMovie"
-            android:defaultValue="@null"
-            app:nullable="true"/>
+            app:nullable="true"
+            android:defaultValue="@null" />
+
     </fragment>
 
 </navigation>

@@ -1,6 +1,8 @@
 package com.example.project8
 
 
+import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -17,7 +19,7 @@ import android.util.Log
 import androidx.navigation.fragment.findNavController
 
 
-private const val BASE_URL = "https://www.omdbapi.com/?apikey=4d23ddf4&"
+private const val BASE_URL = "https://www.omdbapi.com/"
 
 
 class SearchFragment: Fragment() {
@@ -57,6 +59,17 @@ class SearchFragment: Fragment() {
                     Log.i(TAG, "Failed")
                 }
             })
+        }
+        binding.feedback.setOnClickListener {
+            val emailRecipient = "jamfritz@iu.edu"
+            val emailSubject = "Feedback"
+            val emailIntent = Intent(Intent.ACTION_SEND)
+            emailIntent.setClassName("com.google.android.gm", "com.google.android.gm.ConversationListActivity")
+            emailIntent.setDataAndType(Uri.parse("mailto:"),"text/plain")
+            emailIntent.putExtra(Intent.EXTRA_EMAIL  , emailRecipient);
+            emailIntent.putExtra(Intent.EXTRA_SUBJECT, emailSubject);
+            emailIntent.putExtra(Intent.EXTRA_TEXT   , "Please submit feedback");
+            startActivity(Intent.createChooser(emailIntent, "Submit Feedback"))
         }
         return view
     }

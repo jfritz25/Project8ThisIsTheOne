@@ -14,12 +14,13 @@ import com.bumptech.glide.load.resource.bitmap.CenterCrop
 import com.bumptech.glide.load.resource.bitmap.RoundedCorners
 import com.bumptech.glide.request.RequestOptions
 import com.example.project8.databinding.FragmentDisplayBinding
+import com.example.project8.databinding.FragmentSearchBinding
 import com.example.project8.model.OMDBMovie
 
 
 class DisplayFragment: Fragment() {
-    val movie = DisplayFragmentArgs.fromBundle(requireArguments()).movie
 
+    private var movie: OMDBMovie? = null
     private var _binding: FragmentDisplayBinding? = null
 
     private val binding get() = _binding!!
@@ -29,7 +30,11 @@ class DisplayFragment: Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
+        _binding = FragmentDisplayBinding.inflate(inflater, container, false)
+
+        movie = DisplayFragmentArgs.fromBundle(requireArguments()).Movie
         val view = binding.root
+
         binding.Genre.text = movie?.genre
         binding.imdbRating.text = movie?.imdbRating
         binding.Title.text = movie?.title
@@ -51,7 +56,6 @@ class DisplayFragment: Fragment() {
             val intent = Intent(Intent.ACTION_VIEW)
             intent.data = Uri.parse(url.toString())
             startActivity(intent)
-
         }
         binding.button.setOnClickListener {
             val shareIntent = Intent().apply {
@@ -61,6 +65,17 @@ class DisplayFragment: Fragment() {
             }
 
             startActivity(Intent.createChooser(shareIntent, "Share Movie"))
+        }
+        binding.feedback.setOnClickListener {
+            val emailRecipient = "jamfritz@iu.edu"
+            val emailSubject = "Feedback"
+            val emailIntent = Intent(Intent.ACTION_SEND)
+            emailIntent.setClassName("com.google.android.gm", "com.google.android.gm.ConversationListActivity")
+            emailIntent.setDataAndType(Uri.parse("mailto:"),"text/plain")
+            emailIntent.putExtra(Intent.EXTRA_EMAIL  , emailRecipient);
+            emailIntent.putExtra(Intent.EXTRA_SUBJECT, emailSubject);
+            emailIntent.putExtra(Intent.EXTRA_TEXT   , "Please submit feedback");
+            startActivity(Intent.createChooser(emailIntent, "Submit Feedback"))
         }
         return view
 
