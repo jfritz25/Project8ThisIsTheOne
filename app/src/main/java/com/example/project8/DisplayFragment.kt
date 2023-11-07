@@ -68,10 +68,11 @@ class DisplayFragment: Fragment() {
             val emailRecipient = arrayOf("jamfritz@iu.edu")
             val emailSubject = "Feedback"
             val emailIntent = Intent(Intent.ACTION_SEND)
-            emailIntent.setDataAndType(Uri.parse("mailto:"),"message/rcf822")
+            emailIntent.setType("message/rfc882")
             emailIntent.putExtra(Intent.EXTRA_EMAIL  , emailRecipient)
             emailIntent.putExtra(Intent.EXTRA_SUBJECT, emailSubject)
             emailIntent.putExtra(Intent.EXTRA_TEXT   , "Please submit feedback")
+
             startActivity(Intent.createChooser(emailIntent, "Submit Feedback"))
 
         }

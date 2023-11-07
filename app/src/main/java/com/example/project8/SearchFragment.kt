@@ -1,6 +1,8 @@
 package com.example.project8
 
 
+import android.app.Activity
+import android.app.Instrumentation.ActivityResult
 import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
@@ -16,6 +18,7 @@ import retrofit2.Response
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import android.util.Log
+import androidx.activity.result.contract.ActivityResultContracts
 import androidx.navigation.fragment.findNavController
 
 
@@ -60,16 +63,18 @@ class SearchFragment: Fragment() {
                 }
             })
         }
+
         binding.feedback.setOnClickListener {
-            val emailRecipient = "jamfritz@iu.edu"
+            val emailRecipient = arrayOf("jamfritz@iu.edu")
             val emailSubject = "Feedback"
             val emailIntent = Intent(Intent.ACTION_SEND)
-            emailIntent.setClassName("com.google.android.gm", "com.google.android.gm.ConversationListActivity")
-            emailIntent.setDataAndType(Uri.parse("mailto:"),"text/plain")
-            emailIntent.putExtra(Intent.EXTRA_EMAIL  , emailRecipient);
-            emailIntent.putExtra(Intent.EXTRA_SUBJECT, emailSubject);
-            emailIntent.putExtra(Intent.EXTRA_TEXT   , "Please submit feedback");
+            emailIntent.setType("message/rfc882")
+            emailIntent.putExtra(Intent.EXTRA_EMAIL  , emailRecipient)
+            emailIntent.putExtra(Intent.EXTRA_SUBJECT, emailSubject)
+            emailIntent.putExtra(Intent.EXTRA_TEXT   , "Please submit feedback")
+
             startActivity(Intent.createChooser(emailIntent, "Submit Feedback"))
+
         }
         return view
     }
