@@ -67,15 +67,15 @@ class DisplayFragment: Fragment() {
             startActivity(Intent.createChooser(shareIntent, "Share Movie"))
         }
         binding.feedback.setOnClickListener {
-            val emailRecipient = "jamfritz@iu.edu"
+            val emailRecipient = arrayOf("jamfritz@iu.edu")
             val emailSubject = "Feedback"
             val emailIntent = Intent(Intent.ACTION_SEND)
-            emailIntent.setClassName("com.google.android.gm", "com.google.android.gm.ConversationListActivity")
-            emailIntent.setDataAndType(Uri.parse("mailto:"),"text/plain")
-            emailIntent.putExtra(Intent.EXTRA_EMAIL  , emailRecipient);
-            emailIntent.putExtra(Intent.EXTRA_SUBJECT, emailSubject);
-            emailIntent.putExtra(Intent.EXTRA_TEXT   , "Please submit feedback");
+            emailIntent.setDataAndType(Uri.parse("mailto:"),"message/rcf822")
+            emailIntent.putExtra(Intent.EXTRA_EMAIL  , emailRecipient)
+            emailIntent.putExtra(Intent.EXTRA_SUBJECT, emailSubject)
+            emailIntent.putExtra(Intent.EXTRA_TEXT   , "Please submit feedback")
             startActivity(Intent.createChooser(emailIntent, "Submit Feedback"))
+
         }
         return view
 

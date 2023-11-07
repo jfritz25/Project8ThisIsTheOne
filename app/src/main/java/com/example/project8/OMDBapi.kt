@@ -11,5 +11,5 @@ const val API_KEY = "4d23ddf4"
 
 public interface OMDBapi {
     @GET("?apikey=$API_KEY")
-    fun search(@Query("t") title: String): Call<OMDBMovie>
+    fun search(@Query("s") title: String): Call<List<OMDBMovie>>
 }
