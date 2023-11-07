@@ -16,6 +16,13 @@ was valid, we parsed the data from the JSON file and displayed the values in an 
 allowed the user to share this data or click the link to take them to the IMDB page.
 <br>
 <br>
+When taken to the main page, you are able to enter in a movie title, upon hitting search the app takes you to a page that 
+holds the information, the poster, and ability to share the movie. Additionally, if you feel you cana lso submit feedback by pressing
+the button up in the ribbon where you will be taken to gmail or any other messaging platform you have installed on your emulator.
+<br>
+<br>
+In the case that you submit an invalid movie title, the contents will not populate and you will be told that the IMDB page does not support that movie.
+
 
 
 
@@ -23,18 +30,12 @@ allowed the user to share this data or click the link to take them to the IMDB p
 '*' indicates tested in GIF  
 The following **required** functionality is completed:
 <br>
-Safeargs and View Groups were implemented to transfer data from MainActivity.kt to Fragment1.kt. This allows us to gather the user data and translate it in real time!
-
 **Demonstrated**
 <br>
 **START**
-* [Add Note] -> [TITLE:Gettysburg address intro]
-  [Typed: Four score and seven years ago our fathers brought forth on this continent a new nation] [SAVE]
-* [Add Note] -> [TITLE:Lyrics to One Direction's That's what makes you beautiful] [Typed:You're insecure, don't know what for You're turning heads when you walk through the door] [BACK]
-* [Add Note] -> [TITLE:Cities I have visited] [Typed: I have been to New York, I have been to Seattle, I have been to Chicago, I have been to Paris, I have been to Madrid] [SAVE]
-* [Delete Note] -> [Clicked the second cities I have visitied] -> [Are you sure? Yes/No] -> [Yes]
-* [Add Note] -> [TITLE:Animals you see at the Zoo]  [Typed: When i went to the zoo recently. When I I went I saw many animals. I saw lions, i saw elephants, i saw monkeys, i saw orangatans, i saw snakes, and so many more!] [SAVE] [SAVE]
-
+* [SEARCH] [Parent Trap] -> [No photo for this movie] -> [All stats came up] -> [back to main page]
+* [SEARCH] [Titanic] -> [EVERYTHING WAS POPULATED] -> [Link was followed to IMDB page] -> [SHARE was pressed] -> [back to main screen]
+* [SEARCH] [Hello] -> [ALL ITEMS CAME UP]
 <br>
 
 **END**
@@ -55,6 +56,7 @@ UI Challenges:
 
 Backend Challenges:
 - Calling the API point
+- Data Binding stopped working when we attempted the recycler view
 - Working with the format through indexing was more of a learning curve but easy once we got it down
 
 ## License
