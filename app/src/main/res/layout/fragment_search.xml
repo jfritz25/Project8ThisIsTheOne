@@ -48,12 +48,4 @@
             android:layout_weight="1"
             android:id="@+id/searchButton"/>
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/movies_list"
-        android:layout_width="match_parent"
-        android:layout_height="575dp"
-        android:layout_weight="1"
-        app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
-        app:spanCount="2" />
-
 </LinearLayout>
