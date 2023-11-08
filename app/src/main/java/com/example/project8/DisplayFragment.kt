@@ -7,12 +7,15 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.databinding.DataBindingUtil
+import androidx.databinding.ViewDataBinding
 import androidx.fragment.app.Fragment
 import androidx.navigation.NavArgs
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.resource.bitmap.CenterCrop
 import com.bumptech.glide.load.resource.bitmap.RoundedCorners
 import com.bumptech.glide.request.RequestOptions
+import com.example.project8.databinding.ActivityMainBinding
 import com.example.project8.databinding.FragmentDisplayBinding
 import com.example.project8.databinding.FragmentSearchBinding
 import com.example.project8.model.OMDBMovie
@@ -31,9 +34,11 @@ class DisplayFragment: Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         _binding = FragmentDisplayBinding.inflate(inflater, container, false)
-
-        movie = DisplayFragmentArgs.fromBundle(requireArguments()).Movie
         val view = binding.root
+        movie = DisplayFragmentArgs.fromBundle(requireArguments()).Movie
+
+
+
 
         binding.Genre.text = movie?.genre
         binding.imdbRating.text = movie?.imdbRating
