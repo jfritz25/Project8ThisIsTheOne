@@ -5,6 +5,19 @@ import android.os.Parcelable
 import com.google.gson.annotations.SerializedName
 
 data class OMDBMovie(
+    /**
+    * Represents a movie object retrieved from the OMDB (Open Movie Database) API.
+    * This class implements the Parcelable interface for easy serialization and deserialization.
+    *
+    * @param genre       The genre of the movie.
+    * @param imdbRating  The IMDb rating of the movie.
+    * @param rating      The rating of the movie.
+    * @param year        The release year of the movie.
+    * @param title       The title of the movie.
+    * @param runtime     The duration of the movie.
+    * @param posterString The URL string of the movie poster.
+    * @param imdbID      The IMDb ID of the movie.
+    */
     @SerializedName("Genre") val genre: String?,
     @SerializedName("imdbRating") val imdbRating: String?,
     @SerializedName("Rated") val rating: String?,
@@ -15,7 +28,11 @@ data class OMDBMovie(
     @SerializedName("imdbID") val imdbID: String?,
 
     ): Parcelable {
+
     constructor(parcel: Parcel) : this(
+        /**
+         * Constructor used for parceling. Reads values from the parcel and assigns them to the movie object.
+         */
         parcel.readString(),
         parcel.readString(),
         parcel.readString(),
@@ -27,6 +44,9 @@ data class OMDBMovie(
     )
 
     override fun writeToParcel(parcel: Parcel, flags: Int) {
+        /**
+         * Writes the object values to a parcel for serialization.
+         */
         parcel.writeString(genre)
         parcel.writeString(imdbRating)
         parcel.writeString(rating)
@@ -42,6 +62,9 @@ data class OMDBMovie(
     }
 
     companion object CREATOR : Parcelable.Creator<OMDBMovie> {
+        /**
+         * Creator for Parcelable implementation.
+         */
         override fun createFromParcel(parcel: Parcel): OMDBMovie {
             return OMDBMovie(parcel)
         }
