@@ -26,6 +26,9 @@ private const val BASE_URL = "https://www.omdbapi.com/"
 
 
 class SearchFragment: Fragment() {
+    /**
+     * Fragment for searching movies using the OMDB API and displaying the results.
+     */
     private var _binding: FragmentSearchBinding? = null
 
     private val binding get() = _binding!!
@@ -36,6 +39,14 @@ class SearchFragment: Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
+        /**
+         * Creates and returns the view hierarchy associated with the fragment.
+         *
+         * @param inflater           The LayoutInflater object that can be used to inflate any views in the fragment.
+         * @param container          If non-null, this is the parent view that the fragment's UI should be attached to.
+         * @param savedInstanceState If non-null, this fragment is being re-constructed from a previous saved state.
+         * @return The root view of the inflated layout.
+         */
         _binding = FragmentSearchBinding.inflate(inflater, container, false)
         val view = binding.root
 

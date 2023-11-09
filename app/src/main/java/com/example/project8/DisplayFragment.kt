@@ -17,6 +17,11 @@ import com.example.project8.model.OMDBMovie
 
 
 class DisplayFragment: Fragment() {
+    /**
+     * A Fragment that displays detailed information about a movie received as a Parcelable argument.
+     * It includes the movie's genre, IMDb rating, title, release year, rating, runtime, poster image,
+     * and a link to the IMDb page. Users can also share the movie details or submit feedback via email.
+     */
 
     private var movie: OMDBMovie? = null
     private var _binding: FragmentDisplayBinding? = null
@@ -33,6 +38,7 @@ class DisplayFragment: Fragment() {
         movie = DisplayFragmentArgs.fromBundle(requireArguments()).Movie
         val view = binding.root
 
+        // Set movie details to UI elements
         binding.Genre.text = movie?.genre
         binding.imdbRating.text = movie?.imdbRating
         binding.Title.text = movie?.title
@@ -41,6 +47,7 @@ class DisplayFragment: Fragment() {
         binding.Runtime.text = movie?.runtime
         binding.Link.text = "https://www.imdb.com/title/${movie?.imdbID}/"
 
+        // Load and display movie poster using Glide library with rounded corners
         Glide.with(requireContext()).load(movie?.posterString)
             .apply(
                 RequestOptions().transform(
@@ -49,12 +56,15 @@ class DisplayFragment: Fragment() {
             )
             .into(binding.Poster)
 
+        // Open IMDb page when link is clicked
         binding.Link.setOnClickListener {
             val url = binding.Link.text
             val intent = Intent(Intent.ACTION_VIEW)
             intent.data = Uri.parse(url.toString())
             startActivity(intent)
         }
+
+        // Share movie details when button is clicked
         binding.button.setOnClickListener {
             val shareIntent = Intent().apply {
                 action = Intent.ACTION_SEND
@@ -64,6 +74,8 @@ class DisplayFragment: Fragment() {
 
             startActivity(Intent.createChooser(shareIntent, "Share Movie"))
         }
+
+        // Submit feedback via email when feedback button is clicked
         binding.feedback.setOnClickListener {
             val emailRecipient = arrayOf("jamfritz@iu.edu")
             val emailSubject = "Feedback"
