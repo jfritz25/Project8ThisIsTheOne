@@ -34,9 +34,9 @@ The following **required** functionality is completed:
 **Demonstrated**
 <br>
 **START**
+* [SEARCH] [Titanic] -> [EVERYTHING WAS POPULATED] -> [Clicked Share and the options came up] -> [Link was followed to IMDB page] -> [SEND FEEBACK was pressed] -> [Opened GMAIL and sent off a message] -> [Great work! sent to jamfritz@iu.edu] -> [Brought back to movie screen] -> [back to main screen]
 * [SEARCH] [Parent Trap] -> [No photo for this movie] -> [All stats came up] -> [back to main page]
-* [SEARCH] [Titanic] -> [EVERYTHING WAS POPULATED] -> [Link was followed to IMDB page] -> [SHARE was pressed] -> [back to main screen]
-* [SEARCH] [Hello] -> [ALL ITEMS CAME UP]
+* [SEARCH] [Pulp Fiction] -> [ALL ITEMS CAME UP]
 <br>
 
 **END**
@@ -47,7 +47,7 @@ The following **required** functionality is completed:
 Watch a demonstration of the different options when working with the notes app in the gif available on Github
 Here's a walkthrough of a few translations:
 <br>
-![Recording in GIF of Walk Through](https://github.com/asteitz/Project_8/blob/master/app/src/main/java/com/example/project8/Project8Video.gif)
+![Recording in GIF of Walk Through](https://github.com/asteitz/Project_8/blob/master/app/src/main/java/com/example/project8/convert.gif)
 
 GIF created with [CloudConvert](https://cloudconvert.com/).
 
